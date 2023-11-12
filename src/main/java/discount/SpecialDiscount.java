@@ -1,16 +1,24 @@
 package discount;
 
-import java.util.function.IntPredicate;
+import java.util.Set;
 
 public class SpecialDiscount {
+	private final Set<Integer> datesStar = Set.of(3, 10, 17, 24, 25, 31);
+	private final int AMOUNT = 1000;
+	private int date;
 
-	public SpecialDiscount(int testDate) {
-		// TODO Auto-generated constructor stub
+	public SpecialDiscount(int date) {
+		this.date = date;
+	}
+	
+	private boolean isSpecial() {
+		return datesStar.contains(date);
 	}
 
 	public int calculate() {
-		// TODO Auto-generated method stub
+		if(isSpecial()) {
+			return AMOUNT;
+		}
 		return 0;
 	}
-
 }
