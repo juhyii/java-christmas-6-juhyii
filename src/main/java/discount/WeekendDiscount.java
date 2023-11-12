@@ -17,12 +17,12 @@ public class WeekendDiscount {
 		this.inputMenu = inputMenu;
 	}
 
-	private boolean isWeekday() {
+	private boolean isWeekend() {
 		return datesWeekend.contains(date);
 	}
 
 	public int calculate() {
-		if (!isWeekday()) {
+		if (!isWeekend()) {
 			return 0;
 		}
 
