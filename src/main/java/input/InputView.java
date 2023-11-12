@@ -19,10 +19,16 @@ public class InputView {
 		toMenu(menu);
 	}
 
-	private void readDate() {
+	private int readDate() {
 		InputMessages.QUESTION_DATE.print();
 		String input = Console.readLine();
-		date = Integer.parseInt(input);
+		try {
+			ErrorValidation.validateDate(input);
+			return Integer.parseInt(input);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			return readDate();
+		}
 	}
 
 	public static List<String> readMenu() {

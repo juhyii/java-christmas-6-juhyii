@@ -11,6 +11,16 @@ import java.util.stream.Stream;
 import christmas.Menu;
 
 public class ErrorValidation {
+	
+	public static void validateDate(String input) {
+		validateDateRange(validateInteger(input));
+	}
+	
+	private static void validateDateRange(int date) {
+		if (date < 1 || date > 31) {
+			throw new IllegalArgumentException(ErrorMessages.ERROR_DATE.getMessage());
+		}
+	}
 
 	public static void validateOrderFormat(String input) {
 		validateCommaFormat(input);
