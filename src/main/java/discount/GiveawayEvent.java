@@ -1,14 +1,25 @@
 package discount;
 
 public class GiveawayEvent {
+	private int totalAmount;
+	private int STANDARD = 120000;
+	private int AMOUNT = 25000;
 
 	public GiveawayEvent(int totalAmount) {
-		// TODO Auto-generated constructor stub
+		this.totalAmount = totalAmount;
+	}
+	
+	private boolean isGiveaway() {
+		if(totalAmount < STANDARD) {
+			return false;
+		}
+		return true;
 	}
 
 	public int calculate() {
-		// TODO Auto-generated method stub
+		if(isGiveaway()) {
+			return AMOUNT;
+		}
 		return 0;
 	}
-
 }
