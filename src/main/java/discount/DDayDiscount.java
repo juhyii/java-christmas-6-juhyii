@@ -3,7 +3,7 @@ package discount;
 import java.util.HashMap;
 
 public class DDayDiscount {
-	private HashMap<Integer, Integer> discountCalendar;
+	private HashMap<Integer, Integer> discountCalendar = new HashMap<Integer, Integer>();
 
 	public DDayDiscount() {
 		generateCalendar();
