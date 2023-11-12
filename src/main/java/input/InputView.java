@@ -14,12 +14,12 @@ public class InputView {
 
 	public InputView() {
 		InputMessages.HELLO.print();
-		readDate();
+		date = readDate();
 		List<String> menu = readMenu();
 		toMenu(menu);
 	}
 
-	private int readDate() {
+	public static int readDate() {
 		InputMessages.QUESTION_DATE.print();
 		String input = Console.readLine();
 		try {
