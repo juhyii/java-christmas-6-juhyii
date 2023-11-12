@@ -1,8 +1,18 @@
 package discount;
 
 public enum Badges {
-	없음,
-	별,
-	트리,
-	산타
+	없음(0),
+	별(5000),
+	트리(10000),
+	산타(20000);
+	
+	private int standard;
+
+	Badges(int standard) {
+		this.standard = standard;
+	}
+
+	public int standard() {
+		return this.standard;
+	}
 }

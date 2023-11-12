@@ -1,14 +1,22 @@
 package discount;
 
 public class EventBadge {
+	private int totalDiscountAmount;
 
-	public EventBadge(int testAmount) {
-		// TODO Auto-generated constructor stub
+	public EventBadge(int totalDiscountAmount) {
+		this.totalDiscountAmount = totalDiscountAmount;
 	}
 
 	public Badges result() {
-		// TODO Auto-generated method stub
-		return Badges.별;
+		if (totalDiscountAmount >= Badges.산타.standard()) {
+			return Badges.산타;
+		}
+		if (totalDiscountAmount >= Badges.트리.standard()) {
+			return Badges.트리;
+		}
+		if (totalDiscountAmount >= Badges.별.standard()) {
+			return Badges.별;
+		}
+		return Badges.없음;
 	}
-
 }
