@@ -16,7 +16,7 @@ public class InputView {
 		InputMessages.HELLO.print();
 		readDate();
 		List<String> menu = readMenu();
-		cutMenu(menu);
+		toMenu(menu);
 	}
 
 	private void readDate() {
@@ -40,20 +40,11 @@ public class InputView {
 		}
 	}
 
-	private void cutMenu(List<String> menu) {
+	private void toMenu(List<String> menu) {
 		for (String m : menu) {
 			List<String> temp = new ArrayList<>();
 			temp = Stream.of(m.split("-")).toList();
-			toMenu(temp);
-		}
-	}
-
-	private void toMenu(List<String> temp) {
-		for (Menu i : Menu.values()) {
-			if (i.toString().equals(temp.get(0))) {
-				inputMenu.put(i, Integer.parseInt(temp.get(1)));
-				break;
-			}
+			inputMenu.put(Menu.valueOf(temp.get(0)), Integer.parseInt(temp.get(1)));
 		}
 	}
 

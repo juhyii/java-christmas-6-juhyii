@@ -2,7 +2,9 @@ package input;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -31,17 +33,36 @@ public class ErrorValidation {
 	public static void validateMenus(List<String> menus) {
 		List<String> menuNow = new ArrayList<>();
 		List<String> duplication = new ArrayList<>();
-
+		int count = 0;
 		for (String m : menus) {
 			menuNow = Stream.of(m.split("-")).toList();
 			validateNumberRange(validateInteger(menuNow.get(1)));
-
+			count = count + Integer.parseInt(menuNow.get(1));
 			if (duplication.contains(menuNow.get(0))) {
 				throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 			}
 			duplication.add(menuNow.get(0));
 		}
 		validateIsInMenu(duplication);
+		validateOnlyBeverage(duplication);
+		validateCount(count);
+	}
+	
+	private static void validateOnlyBeverage(List<String> menus) {
+		Set<String> type = new HashSet<String>();
+		for (String m : menus) {
+			Menu M = Menu.valueOf(m);
+			type.add(M.type());
+		}
+		if (type.size()==1 && type.contains("음료")) {
+			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
+		}
+	}
+	
+	private static void validateCount(int count) {
+		if (count > 20) {
+			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
+		}
 	}
 
 	private static int validateInteger(String input) {
