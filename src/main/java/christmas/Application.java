@@ -14,6 +14,8 @@ public class Application {
     	date = input.getdate();
     	inputMenu = input.getInputMenu();
     	
+    	int totalOrderAmount = totalOrderAmount();
+    	
     	
     }
     
@@ -23,6 +25,13 @@ public class Application {
     		amount = amount + menu.price() * inputMenu.get(menu);
     	}
     	return amount;
+    }
+    
+    private static boolean applyEvent(int totalOrderAmount){
+    	if (totalOrderAmount < 10000 ) {
+    		return false;
+    	}
+    	return true;
     }
     
     
