@@ -13,7 +13,7 @@ public class OutputView {
 	private static int totalOrderAmount;
 	private static boolean applyEvent;
 	private static boolean giveawayEvent;
-	private static int totalDiscount;
+	private static int totalDiscount = 0;
 	private static List<String> discountDetails = new ArrayList<String>();
 
 	public OutputView(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount, boolean applyEvent, boolean giveawayEvent, int totalDiscount, List<String> discountDetails ) {
@@ -32,6 +32,7 @@ public class OutputView {
 		printTotalOrderAmount();
 		printGiveawayEvent();
 		printDiscountDetails();
+		printTotalDiscountAmount();
 	}
 
 	private static void printDate() {
@@ -62,9 +63,23 @@ public class OutputView {
 	
 	private static void printDiscountDetails() {
 		System.out.println(OutputMessages.DISCOUNT_DETAILS.getMessage());
+		if (discountDetails.size() == 0) {
+			System.out.println(OutputMessages.NOTHING.getMessage());
+			return;
+		}
 		for (String detail : discountDetails) {
 			System.out.println(detail);
 		}
 	}
+	
+	private static void printTotalDiscountAmount() {
+		System.out.println(OutputMessages.TOTAL_DISCOUNT_AMOUNT.getMessage());
+		if (totalDiscount == 0) {
+			System.out.println("0원");
+			return;
+		}
+		System.out.println("-" + ChangeCommaFormat.change(totalDiscount) + "원");
+	}
+		
 
 }
