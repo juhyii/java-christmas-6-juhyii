@@ -1,7 +1,7 @@
 package output;
 
 public enum OutputMessages {
-	NOTICE("에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"),
+	NOTICE("일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"),
 	MENU("<주문 메뉴>"),
 	TOTAL_ORDER_AMOUNT("<할인 전 총주문 금액>"),
 	GIVEAWAY_MENU("<증정 메뉴>"),

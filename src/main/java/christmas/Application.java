@@ -3,6 +3,7 @@ package christmas;
 import java.util.HashMap;
 
 import input.InputView;
+import output.OutputView;
 
 public class Application {
 	private static int date;
@@ -15,7 +16,10 @@ public class Application {
     	inputMenu = input.getInputMenu();
     	
     	int totalOrderAmount = totalOrderAmount();
+    	boolean applyEvent = applyEvent(totalOrderAmount);
     	
+    	OutputView output = new OutputView(date, inputMenu, totalOrderAmount, applyEvent);
+    	output.view();
     	
     }
     
