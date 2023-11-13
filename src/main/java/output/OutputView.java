@@ -18,10 +18,18 @@ public class OutputView {
 
 	public static void view() {
 		printDate();
+		printMenu();
 	}
 
 	private static void printDate() {
 		System.out.println("12월 " + Integer.toString(date) + OutputMessages.NOTICE.getMessage() + "\n");
+	}
+
+	private static void printMenu() {
+		System.out.println(OutputMessages.MENU.getMessage());
+		for (Menu menu : inputMenu.keySet()) {
+			System.out.println(menu.name() + " " + inputMenu.get(menu).toString() + "개");
+		}
 	}
 
 }
