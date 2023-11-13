@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import christmas.Menu;
-import discount.GiveawayEvent;
 import tool.ChangeCommaFormat;
 
 public class OutputView {
@@ -13,14 +12,18 @@ public class OutputView {
 	private static HashMap<Menu, Integer> inputMenu = new HashMap<Menu, Integer>();
 	private static int totalOrderAmount;
 	private static boolean applyEvent;
-	private static int totalDiscount = 0;
+	private static boolean giveawayEvent;
+	private static int totalDiscount;
 	private static List<String> discountDetails = new ArrayList<String>();
 
-	public OutputView(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount, boolean applyEvent) {
+	public OutputView(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount, boolean applyEvent, boolean giveawayEvent, int totalDiscount, List<String> discountDetails ) {
 		this.date = date;
 		this.inputMenu = inputMenu;
 		this.totalOrderAmount = totalOrderAmount;
 		this.applyEvent = applyEvent;
+		this.giveawayEvent = giveawayEvent;
+		this.totalDiscount = totalDiscount;
+		this.discountDetails = discountDetails;
 	}
 
 	public static void view() {
@@ -28,6 +31,7 @@ public class OutputView {
 		printMenu();
 		printTotalOrderAmount();
 		printGiveawayEvent();
+		printDiscountDetails();
 	}
 
 	private static void printDate() {
@@ -49,14 +53,18 @@ public class OutputView {
 
 	private static void printGiveawayEvent() {
 		System.out.println(OutputMessages.GIVEAWAY_MENU.getMessage());
-		GiveawayEvent giveaway = new GiveawayEvent(totalOrderAmount);
-		if (giveaway.calculate() == 0) {
-			System.out.println(OutputMessages.NOTHING.getMessage());
+		if (giveawayEvent) {
+			System.out.println(Menu.샴페인.name()+" 1개");
 			return;
 		}
-		System.out.println(Menu.샴페인.name()+" 1개");
-		totalDiscount = totalDiscount + giveaway.calculate();
-		discountDetails.add(giveaway.discountDetail());
+		System.out.println(OutputMessages.NOTHING.getMessage());
+	}
+	
+	private static void printDiscountDetails() {
+		System.out.println(OutputMessages.DISCOUNT_DETAILS.getMessage());
+		for (String detail : discountDetails) {
+			System.out.println(detail);
+		}
 	}
 
 }

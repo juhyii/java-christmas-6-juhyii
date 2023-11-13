@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import christmas.Menu;
+import tool.ChangeCommaFormat;
 
 public class WeekendDiscount {
 	private final Set<Integer> datesWeekend = Set.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30);
@@ -11,6 +12,7 @@ public class WeekendDiscount {
 	private final String TYPE = "메인";
 	private int date;
 	private HashMap<Menu, Integer> inputMenu = new HashMap<Menu, Integer>();
+	private int discountAmount;
 
 	public WeekendDiscount(int date, HashMap<Menu, Integer> inputMenu) {
 		this.date = date;
@@ -23,7 +25,8 @@ public class WeekendDiscount {
 
 	public int calculate() {
 		if (!isWeekend()) {
-			return 0;
+			discountAmount = 0;
+			return discountAmount;
 		}
 
 		int count = 0;
@@ -32,6 +35,11 @@ public class WeekendDiscount {
 				count = count + inputMenu.get(key);
 			}
 		}
-		return AMOUNT * count;
+		discountAmount = AMOUNT * count;
+		return discountAmount;
+	}
+	
+	public String discountDetail() {
+		return "주말 할인: -" + ChangeCommaFormat.change(discountAmount) + "원";
 	}
 }

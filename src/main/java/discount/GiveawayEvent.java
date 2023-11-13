@@ -6,6 +6,7 @@ public class GiveawayEvent {
 	private int totalAmount;
 	private int STANDARD = 120000;
 	private int AMOUNT = 25000;
+	private int discountAmount;
 
 	public GiveawayEvent(int totalAmount) {
 		this.totalAmount = totalAmount;
@@ -20,12 +21,14 @@ public class GiveawayEvent {
 
 	public int calculate() {
 		if(isGiveaway()) {
-			return AMOUNT;
+			discountAmount = AMOUNT;
+			return discountAmount;
 		}
-		return 0;
+		discountAmount = 0;
+		return discountAmount;
 	}
 	
 	public String discountDetail() {
-		return "증정 이벤트: -" + ChangeCommaFormat.change(AMOUNT) + "원";
+		return "증정 이벤트: -" + ChangeCommaFormat.change(discountAmount) + "원";
 	}
 }

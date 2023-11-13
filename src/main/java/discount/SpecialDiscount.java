@@ -2,10 +2,13 @@ package discount;
 
 import java.util.Set;
 
+import tool.ChangeCommaFormat;
+
 public class SpecialDiscount {
 	private final Set<Integer> datesStar = Set.of(3, 10, 17, 24, 25, 31);
 	private final int AMOUNT = 1000;
 	private int date;
+	private int discountAmount;
 
 	public SpecialDiscount(int date) {
 		this.date = date;
@@ -17,8 +20,14 @@ public class SpecialDiscount {
 
 	public int calculate() {
 		if(isSpecial()) {
-			return AMOUNT;
+			discountAmount = AMOUNT;
+			return discountAmount;
 		}
-		return 0;
+		discountAmount = 0;
+		return discountAmount;
+	}
+	
+	public String discountDetail() {
+		return "특별 할인: -" + ChangeCommaFormat.change(discountAmount) + "원";
 	}
 }

@@ -1,6 +1,7 @@
 package christmas;
 
 import java.util.HashMap;
+import java.util.List;
 
 import input.InputView;
 import output.OutputView;
@@ -18,7 +19,13 @@ public class Application {
     	int totalOrderAmount = totalOrderAmount();
     	boolean applyEvent = applyEvent(totalOrderAmount);
     	
-    	OutputView output = new OutputView(date, inputMenu, totalOrderAmount, applyEvent);
+    	ApplyDiscounts discounts = new ApplyDiscounts(date, inputMenu, totalOrderAmount);
+    	discounts.apply();
+    	int totalDiscount = discounts.totalDiscount;
+    	List<String> discountDetails = discounts.discountDetails;
+    	boolean giveawayEvent = discounts.giveawayEvent;
+    	
+    	OutputView output = new OutputView(date, inputMenu, totalOrderAmount, applyEvent, giveawayEvent, totalDiscount, discountDetails);
     	output.view();
     	
     }
