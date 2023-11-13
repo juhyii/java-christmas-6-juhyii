@@ -33,6 +33,7 @@ public class OutputView {
 		printGiveawayEvent();
 		printDiscountDetails();
 		printTotalDiscountAmount();
+		printAmountAfterDiscount();
 	}
 
 	private static void printDate() {
@@ -79,6 +80,14 @@ public class OutputView {
 			return;
 		}
 		System.out.println("-" + ChangeCommaFormat.change(totalDiscount) + "원");
+	}
+	
+	private static void printAmountAfterDiscount() {
+		System.out.println(OutputMessages.AMOUNT_AFTER_DISCOUNT.getMessage());
+		if (giveawayEvent) {
+			totalDiscount = totalDiscount - 25000;
+		}
+		System.out.println(ChangeCommaFormat.change(totalOrderAmount-totalDiscount) + "원");
 	}
 		
 
