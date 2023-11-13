@@ -13,13 +13,22 @@ import christmas.Menu;
 public class ErrorValidation {
 	
 	public static void validateDate(String input) {
-		validateDateRange(validateInteger(input));
+		validateDateRange(validateDateInteger(input));
 	}
 	
 	private static void validateDateRange(int date) {
 		if (date < 1 || date > 31) {
 			throw new IllegalArgumentException(ErrorMessages.ERROR_DATE.getMessage());
 		}
+	}
+	
+	private static int validateDateInteger(String input) {
+		try {
+			Integer.parseInt(input);
+		} catch (NumberFormatException e) {
+			throw new IllegalArgumentException(ErrorMessages.ERROR_DATE.getMessage());
+		}
+		return Integer.parseInt(input);
 	}
 
 	public static void validateOrderFormat(String input) {
@@ -46,7 +55,7 @@ public class ErrorValidation {
 		int count = 0;
 		for (String m : menus) {
 			menuNow = Stream.of(m.split("-")).toList();
-			validateNumberRange(validateInteger(menuNow.get(1)));
+			validateNumberRange(validateMenuInteger(menuNow.get(1)));
 			count = count + Integer.parseInt(menuNow.get(1));
 			if (duplication.contains(menuNow.get(0))) {
 				throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
@@ -75,7 +84,7 @@ public class ErrorValidation {
 		}
 	}
 
-	private static int validateInteger(String input) {
+	private static int validateMenuInteger(String input) {
 		try {
 			Integer.parseInt(input);
 		} catch (NumberFormatException e) {

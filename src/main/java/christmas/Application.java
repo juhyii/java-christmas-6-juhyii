@@ -3,6 +3,7 @@ package christmas;
 import java.util.HashMap;
 import java.util.List;
 
+import discount.Badges;
 import input.InputView;
 import output.OutputView;
 
@@ -24,8 +25,9 @@ public class Application {
     	int totalDiscount = discounts.totalDiscount;
     	List<String> discountDetails = discounts.discountDetails;
     	boolean giveawayEvent = discounts.giveawayEvent;
+    	Badges myBadge = discounts.myBadge;
     	
-    	OutputView output = new OutputView(date, inputMenu, totalOrderAmount, applyEvent, giveawayEvent, totalDiscount, discountDetails);
+    	OutputView output = new OutputView(date, inputMenu, totalOrderAmount, applyEvent, giveawayEvent, totalDiscount, discountDetails, myBadge);
     	output.view();
     	
     }

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import discount.Badges;
 import discount.DDayDiscount;
+import discount.EventBadge;
 import discount.GiveawayEvent;
 import discount.SpecialDiscount;
 import discount.WeekdayDiscount;
@@ -18,6 +20,7 @@ public class ApplyDiscounts {
 	public static boolean giveawayEvent = false;
 	public static int totalDiscount = 0;
 	public static List<String> discountDetails = new ArrayList<String>();
+	public static Badges myBadge;
 	
 	public ApplyDiscounts(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount) {
 		this.date = date;
@@ -31,6 +34,7 @@ public class ApplyDiscounts {
 		applyWeekendDiscount();
 		applySpecialDiscount();
 		applyGiveawayEvent();
+		applyEventBadge();
 	}
 
 	private static void applyDDayDiscount() {
@@ -77,6 +81,11 @@ public class ApplyDiscounts {
 			discountDetails.add(giveaway.discountDetail());
 			giveawayEvent = true;
 		}
+	}
+	
+	private static void applyEventBadge() {
+		EventBadge badge = new EventBadge(totalDiscount);
+		myBadge = badge.result();
 	}
 
 }

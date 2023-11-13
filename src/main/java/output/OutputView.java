@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import christmas.Menu;
+import discount.Badges;
 import tool.ChangeCommaFormat;
 
 public class OutputView {
@@ -15,8 +16,9 @@ public class OutputView {
 	private static boolean giveawayEvent;
 	private static int totalDiscount = 0;
 	private static List<String> discountDetails = new ArrayList<String>();
+	private static Badges myBadge;
 
-	public OutputView(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount, boolean applyEvent, boolean giveawayEvent, int totalDiscount, List<String> discountDetails ) {
+	public OutputView(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount, boolean applyEvent, boolean giveawayEvent, int totalDiscount, List<String> discountDetails ,Badges myBadge) {
 		this.date = date;
 		this.inputMenu = inputMenu;
 		this.totalOrderAmount = totalOrderAmount;
@@ -24,6 +26,7 @@ public class OutputView {
 		this.giveawayEvent = giveawayEvent;
 		this.totalDiscount = totalDiscount;
 		this.discountDetails = discountDetails;
+		this.myBadge = myBadge;
 	}
 
 	public static void view() {
@@ -34,6 +37,7 @@ public class OutputView {
 		printDiscountDetails();
 		printTotalDiscountAmount();
 		printAmountAfterDiscount();
+		printEventBadge();
 	}
 
 	private static void printDate() {
@@ -88,6 +92,11 @@ public class OutputView {
 			totalDiscount = totalDiscount - 25000;
 		}
 		System.out.println(ChangeCommaFormat.change(totalOrderAmount-totalDiscount) + "원");
+	}
+	
+	private static void printEventBadge() {
+		System.out.println(OutputMessages.EVENT_BADGE.getMessage());
+		System.out.println(myBadge.name());
 	}
 		
 
