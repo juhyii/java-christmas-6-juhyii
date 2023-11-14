@@ -55,7 +55,7 @@ public class ErrorValidation {
 		validateHyphen(splitedInput);
 	}
 
-	public static void validateHyphen(String splitedInput) {
+	private static void validateHyphen(String splitedInput) {
 		if (!Pattern.matches("[가-힣]+-\\d+", splitedInput)) {
 			Notification.NOTICE_MENU_FORMAT.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
@@ -80,6 +80,40 @@ public class ErrorValidation {
 		validateIsInMenu(duplication);
 		validateOnlyBeverage(duplication);
 	}
+	
+	private static int validateMenuInteger(String input) {
+		try {
+			Integer.parseInt(input);
+		} catch (NumberFormatException e) {
+			Notification.NOTICE_MENU_INTEGER.print();
+			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
+		}
+		return Integer.parseInt(input);
+	}
+	
+	private static void validateNumberRange(int number) {
+		if (number < 1) {
+			Notification.NOTICE_MENU_ONE.print();
+			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
+		}
+	}
+	
+	private static void validateCount(int count) {
+		if (count > 20) {
+			Notification.NOTICE_TOO_MANY_MENU.print();
+			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
+		}
+	}
+	
+	private static void validateIsInMenu(List<String> menus) {
+		List<String> inMenu = Stream.of(Menu.values()).map(Enum::name).collect(Collectors.toList());
+		for (String m : menus) {
+			if (!inMenu.contains(m)) {
+				Notification.NOTICE_MENU_IS.print();
+				throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
+			}
+		}
+	}
 
 	private static void validateOnlyBeverage(List<String> menus) {
 		Set<String> type = new HashSet<String>();
@@ -91,39 +125,5 @@ public class ErrorValidation {
 			Notification.NOTICE_ONLY_BEVERAGE.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
-	}
-
-	private static void validateCount(int count) {
-		if (count > 20) {
-			Notification.NOTICE_TOO_MANY_MENU.print();
-			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
-		}
-	}
-
-	private static int validateMenuInteger(String input) {
-		try {
-			Integer.parseInt(input);
-		} catch (NumberFormatException e) {
-			Notification.NOTICE_MENU_INTEGER.print();
-			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
-		}
-		return Integer.parseInt(input);
-	}
-
-	private static void validateNumberRange(int number) {
-		if (number < 1) {
-			Notification.NOTICE_MENU_ONE.print();
-			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
-		}
-	}
-
-	private static void validateIsInMenu(List<String> menus) {
-		List<String> inMenu = Stream.of(Menu.values()).map(Enum::name).collect(Collectors.toList());
-		for (String m : menus) {
-			if (!inMenu.contains(m)) {
-				Notification.NOTICE_MENU_IS.print();
-				throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
-			}
-		}
-	}
+	}	
 }
