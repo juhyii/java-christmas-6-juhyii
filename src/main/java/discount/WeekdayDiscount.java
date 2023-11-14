@@ -39,7 +39,7 @@ public class WeekdayDiscount {
 		discountAmount = AMOUNT * count;
 		return discountAmount;
 	}
-	
+
 	public String discountDetail() {
 		return "평일 할인: -" + ChangeCommaFormat.change(discountAmount) + "원";
 	}

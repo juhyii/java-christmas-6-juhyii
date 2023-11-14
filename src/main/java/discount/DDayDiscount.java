@@ -28,7 +28,7 @@ public class DDayDiscount {
 		discountAmount = discountCalendar.get(date);
 		return discountAmount;
 	}
-	
+
 	public String discountDetail() {
 		return "크리스마스 디데이 할인: -" + ChangeCommaFormat.change(discountAmount) + "원";
 	}

@@ -16,12 +16,12 @@ public class ApplyDiscounts {
 	private static int date;
 	private static HashMap<Menu, Integer> inputMenu = new HashMap<Menu, Integer>();
 	private static int totalOrderAmount;
-	
+
 	public static boolean giveawayEvent = false;
 	public static int totalDiscount = 0;
 	public static List<String> discountDetails = new ArrayList<String>();
 	public static Badges myBadge = Badges.없음;
-	
+
 	public ApplyDiscounts(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount) {
 		this.date = date;
 		this.inputMenu = inputMenu;
@@ -82,7 +82,7 @@ public class ApplyDiscounts {
 			giveawayEvent = true;
 		}
 	}
-	
+
 	private static void applyEventBadge() {
 		EventBadge badge = new EventBadge(totalDiscount);
 		myBadge = badge.result();

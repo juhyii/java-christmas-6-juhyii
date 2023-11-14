@@ -25,8 +25,7 @@ public class Application {
 		boolean giveawayEvent = discounts.giveawayEvent;
 		Badges myBadge = discounts.myBadge;
 
-		OutputView output = new OutputView(date, inputMenu, totalOrderAmount, giveawayEvent, totalDiscount,
-				discountDetails, myBadge);
+		OutputView output = new OutputView(date, inputMenu, totalOrderAmount, giveawayEvent, totalDiscount, discountDetails, myBadge);
 		output.view();
 	}
 

@@ -12,17 +12,17 @@ import java.util.stream.Stream;
 import christmas.Menu;
 
 public class ErrorValidation {
-	
+
 	public static void validateDate(String input) {
 		validateDateRange(validateDateInteger(input));
 	}
-	
+
 	private static void validateDateRange(int date) {
 		if (date < 1 || date > 31) {
 			throw new IllegalArgumentException(ErrorMessages.ERROR_DATE.getMessage());
 		}
 	}
-	
+
 	private static int validateDateInteger(String input) {
 		try {
 			Integer.parseInt(input);
@@ -50,7 +50,7 @@ public class ErrorValidation {
 		}
 		validateHyphen(splitedInput);
 	}
-	
+
 	public static void validateHyphen(String splitedInput) {
 		if (!Pattern.matches("[가-힣]+-\\d+", splitedInput)) {
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
@@ -74,19 +74,19 @@ public class ErrorValidation {
 		validateIsInMenu(duplication);
 		validateOnlyBeverage(duplication);
 	}
-	
+
 	private static void validateOnlyBeverage(List<String> menus) {
 		Set<String> type = new HashSet<String>();
 		for (String m : menus) {
 			Menu M = Menu.valueOf(m);
 			type.add(M.type());
 		}
-		if (type.size()==1 && type.contains("음료")) {
+		if (type.size() == 1 && type.contains("음료")) {
 			Notification.NOTICE_ONLY_BEVERAGE.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
 	}
-	
+
 	private static void validateCount(int count) {
 		if (count > 20) {
 			Notification.NOTICE_TOO_MANY_MENU.print();

@@ -13,20 +13,20 @@ public class SpecialDiscount {
 	public SpecialDiscount(int date) {
 		this.date = date;
 	}
-	
+
 	private boolean isSpecial() {
 		return datesStar.contains(date);
 	}
 
 	public int calculate() {
-		if(isSpecial()) {
+		if (isSpecial()) {
 			discountAmount = AMOUNT;
 			return discountAmount;
 		}
 		discountAmount = 0;
 		return discountAmount;
 	}
-	
+
 	public String discountDetail() {
 		return "특별 할인: -" + ChangeCommaFormat.change(discountAmount) + "원";
 	}

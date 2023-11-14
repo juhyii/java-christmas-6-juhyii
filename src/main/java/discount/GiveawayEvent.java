@@ -11,23 +11,23 @@ public class GiveawayEvent {
 	public GiveawayEvent(int totalAmount) {
 		this.totalAmount = totalAmount;
 	}
-	
+
 	private boolean isGiveaway() {
-		if(totalAmount < STANDARD) {
+		if (totalAmount < STANDARD) {
 			return false;
 		}
 		return true;
 	}
 
 	public int calculate() {
-		if(isGiveaway()) {
+		if (isGiveaway()) {
 			discountAmount = AMOUNT;
 			return discountAmount;
 		}
 		discountAmount = 0;
 		return discountAmount;
 	}
-	
+
 	public String discountDetail() {
 		return "증정 이벤트: -" + ChangeCommaFormat.change(discountAmount) + "원";
 	}

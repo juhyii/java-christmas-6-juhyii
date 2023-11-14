@@ -18,7 +18,8 @@ public class OutputView {
 	private static List<String> discountDetails = new ArrayList<String>();
 	private static Badges myBadge;
 
-	public OutputView(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount, boolean giveawayEvent, int totalDiscount, List<String> discountDetails ,Badges myBadge) {
+	public OutputView(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount, boolean giveawayEvent,
+			int totalDiscount, List<String> discountDetails, Badges myBadge) {
 		this.date = date;
 		this.inputMenu = inputMenu;
 		this.totalOrderAmount = totalOrderAmount;
@@ -60,12 +61,12 @@ public class OutputView {
 	private static void printGiveawayEvent() {
 		System.out.println(OutputMessages.GIVEAWAY_MENU.getMessage());
 		if (giveawayEvent) {
-			System.out.println(Menu.샴페인.name()+" 1개");
+			System.out.println(Menu.샴페인.name() + " 1개");
 			return;
 		}
 		System.out.println(OutputMessages.NOTHING.getMessage());
 	}
-	
+
 	private static void printDiscountDetails() {
 		System.out.println(OutputMessages.DISCOUNT_DETAILS.getMessage());
 		if (discountDetails.size() == 0) {
@@ -76,7 +77,7 @@ public class OutputView {
 			System.out.println(detail);
 		}
 	}
-	
+
 	private static void printTotalDiscountAmount() {
 		System.out.println(OutputMessages.TOTAL_DISCOUNT_AMOUNT.getMessage());
 		if (totalDiscount == 0) {
@@ -85,19 +86,17 @@ public class OutputView {
 		}
 		System.out.println("-" + ChangeCommaFormat.change(totalDiscount) + "원");
 	}
-	
+
 	private static void printAmountAfterDiscount() {
 		System.out.println(OutputMessages.AMOUNT_AFTER_DISCOUNT.getMessage());
 		if (giveawayEvent) {
 			totalDiscount = totalDiscount - 25000;
 		}
-		System.out.println(ChangeCommaFormat.change(totalOrderAmount-totalDiscount) + "원");
+		System.out.println(ChangeCommaFormat.change(totalOrderAmount - totalDiscount) + "원");
 	}
-	
+
 	private static void printEventBadge() {
 		System.out.println(OutputMessages.EVENT_BADGE.getMessage());
 		System.out.println(myBadge.name());
 	}
-		
-
 }

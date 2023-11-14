@@ -29,5 +29,4 @@ public enum Menu {
 	public int price() {
 		return this.price;
 	}
-
 }

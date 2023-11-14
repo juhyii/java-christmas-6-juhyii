@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class EventBadgeTest {
 	private int testAmount;
-	
+
 	@DisplayName("이벤트 배지 테스트 - 없음")
 	@Test
 	void testBadge1() {
@@ -15,7 +15,7 @@ class EventBadgeTest {
 
 		assertThat(testBadge.result()).isEqualTo(Badges.없음);
 	}
-	
+
 	@DisplayName("이벤트 배지 테스트 - 별")
 	@Test
 	void testBadge2() {
@@ -33,7 +33,7 @@ class EventBadgeTest {
 
 		assertThat(testBadge.result()).isEqualTo(Badges.트리);
 	}
-	
+
 	@DisplayName("이벤트 배지 테스트 - 산타")
 	@Test
 	void testBadge4() {
