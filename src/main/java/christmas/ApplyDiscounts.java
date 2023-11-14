@@ -20,7 +20,7 @@ public class ApplyDiscounts {
 	public static boolean giveawayEvent = false;
 	public static int totalDiscount = 0;
 	public static List<String> discountDetails = new ArrayList<String>();
-	public static Badges myBadge;
+	public static Badges myBadge = Badges.없음;
 	
 	public ApplyDiscounts(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount) {
 		this.date = date;

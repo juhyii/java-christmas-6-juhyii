@@ -6,23 +6,22 @@ import java.util.List;
 
 import christmas.Menu;
 import discount.Badges;
+import input.Notification;
 import tool.ChangeCommaFormat;
 
 public class OutputView {
 	private static int date;
 	private static HashMap<Menu, Integer> inputMenu = new HashMap<Menu, Integer>();
 	private static int totalOrderAmount;
-	private static boolean applyEvent;
 	private static boolean giveawayEvent;
 	private static int totalDiscount = 0;
 	private static List<String> discountDetails = new ArrayList<String>();
 	private static Badges myBadge;
 
-	public OutputView(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount, boolean applyEvent, boolean giveawayEvent, int totalDiscount, List<String> discountDetails ,Badges myBadge) {
+	public OutputView(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount, boolean giveawayEvent, int totalDiscount, List<String> discountDetails ,Badges myBadge) {
 		this.date = date;
 		this.inputMenu = inputMenu;
 		this.totalOrderAmount = totalOrderAmount;
-		this.applyEvent = applyEvent;
 		this.giveawayEvent = giveawayEvent;
 		this.totalDiscount = totalDiscount;
 		this.discountDetails = discountDetails;
@@ -42,6 +41,7 @@ public class OutputView {
 
 	private static void printDate() {
 		System.out.println("12월 " + Integer.toString(date) + OutputMessages.NOTICE.getMessage() + "");
+		Notification.NOTICE_TOTAL_ORDER_AMOUNT.print();
 	}
 
 	private static void printMenu() {
