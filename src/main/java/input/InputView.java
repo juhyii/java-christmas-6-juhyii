@@ -9,8 +9,8 @@ import camp.nextstep.edu.missionutils.Console;
 import christmas.Menu;
 
 public class InputView {
-	private int date;
-	private HashMap<Menu, Integer> inputMenu = new HashMap<Menu, Integer>();
+	private final int date;
+	private final HashMap<Menu, Integer> inputMenu = new HashMap<Menu, Integer>();
 
 	public InputView() {
 		InputMessages.HELLO.print();

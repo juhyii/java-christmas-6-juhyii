@@ -3,9 +3,9 @@ package discount;
 import tool.ChangeCommaFormat;
 
 public class GiveawayEvent {
-	private int totalAmount;
-	private int STANDARD = 120000;
-	private int AMOUNT = 25000;
+	private final int totalAmount;
+	private final int STANDARD = 120000;
+	private final int AMOUNT = 25000;
 	private int discountAmount;
 
 	public GiveawayEvent(int totalAmount) {

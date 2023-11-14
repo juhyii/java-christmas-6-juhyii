@@ -5,7 +5,7 @@ import java.util.HashMap;
 import tool.ChangeCommaFormat;
 
 public class DDayDiscount {
-	private HashMap<Integer, Integer> discountCalendar = new HashMap<Integer, Integer>();
+	private final HashMap<Integer, Integer> discountCalendar = new HashMap<Integer, Integer>();
 	private int discountAmount = 0;
 
 	public DDayDiscount() {

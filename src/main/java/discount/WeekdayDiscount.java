@@ -11,7 +11,7 @@ public class WeekdayDiscount {
 			27, 28, 31);
 	private final int AMOUNT = 2023;
 	private final String TYPE = "디저트";
-	private int date;
+	private final int date;
 	private HashMap<Menu, Integer> inputMenu = new HashMap<Menu, Integer>();
 	private int discountAmount;
 

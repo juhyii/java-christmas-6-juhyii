@@ -14,8 +14,8 @@ public enum Menu {
 	레드와인("음료", 60000),
 	샴페인("음료", 25000);
 	
-	private String type;
-	private int price;
+	private final String type;
+	private final int price;
 
 	Menu(String type, int price) {
 		this.type = type;

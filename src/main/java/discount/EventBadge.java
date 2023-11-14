@@ -1,7 +1,7 @@
 package discount;
 
 public class EventBadge {
-	private int totalDiscountAmount;
+	private final int totalDiscountAmount;
 
 	public EventBadge(int totalDiscountAmount) {
 		this.totalDiscountAmount = totalDiscountAmount;

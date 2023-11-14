@@ -5,7 +5,7 @@ public enum Notification {
 	NOTICE_ONLY_BEVERAGE("[NOTICE] 음료만 주문 시, 주문할 수 없습니다."),
 	NOTICE_TOO_MANY_MENU("[NOTICE] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
 	
-	private String message;
+	private final String message;
 	
 	Notification(String message){
 		this.message = message;

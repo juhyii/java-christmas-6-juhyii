@@ -7,7 +7,7 @@ import tool.ChangeCommaFormat;
 public class SpecialDiscount {
 	private final Set<Integer> datesStar = Set.of(3, 10, 17, 24, 25, 31);
 	private final int AMOUNT = 1000;
-	private int date;
+	private final int date;
 	private int discountAmount;
 
 	public SpecialDiscount(int date) {

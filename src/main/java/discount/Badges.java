@@ -6,7 +6,7 @@ public enum Badges {
 	트리(10000),
 	산타(20000);
 	
-	private int standard;
+	private final int standard;
 
 	Badges(int standard) {
 		this.standard = standard;

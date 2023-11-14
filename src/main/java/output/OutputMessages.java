@@ -11,7 +11,7 @@ public enum OutputMessages {
 	EVENT_BADGE("\n<12월 이벤트 배지>"),
 	NOTHING("없음");
 	
-	private String message;
+	private final String message;
 	
 	OutputMessages(String message){
 		this.message = message;

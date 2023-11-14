@@ -10,7 +10,7 @@ public class WeekendDiscount {
 	private final Set<Integer> datesWeekend = Set.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30);
 	private final int AMOUNT = 2023;
 	private final String TYPE = "메인";
-	private int date;
+	private final int date;
 	private HashMap<Menu, Integer> inputMenu = new HashMap<Menu, Integer>();
 	private int discountAmount;
 
