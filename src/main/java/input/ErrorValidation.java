@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -47,6 +48,13 @@ public class ErrorValidation {
 		if (splitedInput.contains("--") || splitedInput.startsWith("-") || splitedInput.endsWith("-")) {
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
+		validateHyphen(splitedInput);
+	}
+	
+	public static void validateHyphen(String splitedInput) {
+		if (!Pattern.matches("[가-힣]+-\\d+", splitedInput)) {
+			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
+		}
 	}
 
 	public static void validateMenus(List<String> menus) {
@@ -62,9 +70,9 @@ public class ErrorValidation {
 			}
 			duplication.add(menuNow.get(0));
 		}
+		validateCount(count);
 		validateIsInMenu(duplication);
 		validateOnlyBeverage(duplication);
-		validateCount(count);
 	}
 	
 	private static void validateOnlyBeverage(List<String> menus) {
@@ -74,12 +82,14 @@ public class ErrorValidation {
 			type.add(M.type());
 		}
 		if (type.size()==1 && type.contains("음료")) {
+			Notification.NOTICE_ONLY_BEVERAGE.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
 	}
 	
 	private static void validateCount(int count) {
 		if (count > 20) {
+			Notification.NOTICE_TOO_MANY_MENU.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
 	}
