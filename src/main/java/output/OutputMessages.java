@@ -13,7 +13,7 @@ public enum OutputMessages {
 	
 	private final String message;
 	
-	OutputMessages(String message){
+	private OutputMessages(String message){
 		this.message = message;
 	}
 	

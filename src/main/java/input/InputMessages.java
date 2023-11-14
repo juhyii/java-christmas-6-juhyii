@@ -7,7 +7,7 @@ public enum InputMessages {
 	
 	private final String message;
 	
-	InputMessages(String message){
+	private InputMessages(String message){
 		this.message = message;
 	}
 	

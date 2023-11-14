@@ -8,7 +8,7 @@ public enum Notification {
 	
 	private final String message;
 	
-	Notification(String message){
+	private Notification(String message){
 		this.message = message;
 	}
 	

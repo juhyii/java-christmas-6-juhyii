@@ -8,7 +8,7 @@ public enum Badges {
 	
 	private final int standard;
 
-	Badges(int standard) {
+	private Badges(int standard) {
 		this.standard = standard;
 	}
 
