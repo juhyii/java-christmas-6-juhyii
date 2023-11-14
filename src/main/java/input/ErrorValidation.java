@@ -19,6 +19,7 @@ public class ErrorValidation {
 
 	private static void validateDateRange(int date) {
 		if (date < 1 || date > 31) {
+			Notification.NOTICE_DATE_RANGE.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_DATE.getMessage());
 		}
 	}
@@ -27,6 +28,7 @@ public class ErrorValidation {
 		try {
 			Integer.parseInt(input);
 		} catch (NumberFormatException e) {
+			Notification.NOTICE_DATE_INTEGER.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_DATE.getMessage());
 		}
 		return Integer.parseInt(input);
@@ -40,12 +42,14 @@ public class ErrorValidation {
 
 	private static void validateCommaFormat(String input) {
 		if (input.contains(",,") || input.startsWith(",") || input.endsWith(",")) {
+			Notification.NOTICE_MENU_COMMA.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
 	}
 
 	private static void validateHyphenFormat(String splitedInput) {
 		if (splitedInput.contains("--") || splitedInput.startsWith("-") || splitedInput.endsWith("-")) {
+			Notification.NOTICE_MENU_HYPHEN.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
 		validateHyphen(splitedInput);
@@ -53,6 +57,7 @@ public class ErrorValidation {
 
 	public static void validateHyphen(String splitedInput) {
 		if (!Pattern.matches("[가-힣]+-\\d+", splitedInput)) {
+			Notification.NOTICE_MENU_FORMAT.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
 	}
@@ -66,6 +71,7 @@ public class ErrorValidation {
 			validateNumberRange(validateMenuInteger(menuNow.get(1)));
 			count = count + Integer.parseInt(menuNow.get(1));
 			if (duplication.contains(menuNow.get(0))) {
+				Notification.NOTICE_MENU_DUPLICATION.print();
 				throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 			}
 			duplication.add(menuNow.get(0));
@@ -98,6 +104,7 @@ public class ErrorValidation {
 		try {
 			Integer.parseInt(input);
 		} catch (NumberFormatException e) {
+			Notification.NOTICE_MENU_INTEGER.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
 		return Integer.parseInt(input);
@@ -105,6 +112,7 @@ public class ErrorValidation {
 
 	private static void validateNumberRange(int number) {
 		if (number < 1) {
+			Notification.NOTICE_MENU_ONE.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
 	}
@@ -113,6 +121,7 @@ public class ErrorValidation {
 		List<String> inMenu = Stream.of(Menu.values()).map(Enum::name).collect(Collectors.toList());
 		for (String m : menus) {
 			if (!inMenu.contains(m)) {
+				Notification.NOTICE_MENU_IS.print();
 				throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 			}
 		}
