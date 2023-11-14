@@ -1,4 +1,4 @@
-package input;
+package ErrorValidation;
 
 public enum Notification {
 	NOTICE_TOTAL_ORDER_AMOUNT("총주문 금액 10,000원 이상부터 이벤트가 적용됩니다."),

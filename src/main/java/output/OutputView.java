@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import christmas.Menu;
+import ErrorValidation.Notification;
 import discount.Badges;
-import input.Notification;
+import domain.Menu;
 import tool.ChangeCommaFormat;
 
 public class OutputView {

@@ -1,67 +1,16 @@
-package input;
+package ErrorValidation;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import christmas.Menu;
+import domain.Menu;
 
-public class ErrorValidation {
-
-	public static void validateDate(String input) {
-		validateDateRange(validateDateInteger(input));
-	}
-
-	private static void validateDateRange(int date) {
-		if (date < 1 || date > 31) {
-			Notification.NOTICE_DATE_RANGE.print();
-			throw new IllegalArgumentException(ErrorMessages.ERROR_DATE.getMessage());
-		}
-	}
-
-	private static int validateDateInteger(String input) {
-		try {
-			Integer.parseInt(input);
-		} catch (NumberFormatException e) {
-			Notification.NOTICE_DATE_INTEGER.print();
-			throw new IllegalArgumentException(ErrorMessages.ERROR_DATE.getMessage());
-		}
-		return Integer.parseInt(input);
-	}
-
-	public static void validateOrderFormat(String input) {
-		validateCommaFormat(input);
-		String[] splitInput = input.split(",");
-		Arrays.stream(splitInput).forEach(ErrorValidation::validateHyphenFormat);
-	}
-
-	private static void validateCommaFormat(String input) {
-		if (input.contains(",,") || input.startsWith(",") || input.endsWith(",")) {
-			Notification.NOTICE_MENU_COMMA.print();
-			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
-		}
-	}
-
-	private static void validateHyphenFormat(String splitedInput) {
-		if (splitedInput.contains("--") || splitedInput.startsWith("-") || splitedInput.endsWith("-")) {
-			Notification.NOTICE_MENU_HYPHEN.print();
-			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
-		}
-		validateHyphen(splitedInput);
-	}
-
-	private static void validateHyphen(String splitedInput) {
-		if (!Pattern.matches("[가-힣]+-\\d+", splitedInput)) {
-			Notification.NOTICE_MENU_FORMAT.print();
-			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
-		}
-	}
-
+public class ValidateMenuFormat {
+	
 	public static void validateMenus(List<String> menus) {
 		List<String> menuNow = new ArrayList<>();
 		List<String> duplication = new ArrayList<>();
@@ -125,5 +74,5 @@ public class ErrorValidation {
 			Notification.NOTICE_ONLY_BEVERAGE.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
-	}	
+	}
 }

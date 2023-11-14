@@ -6,7 +6,7 @@ import java.util.HashMap;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import christmas.Menu;
+import domain.Menu;
 
 class WeekendDiscountTest {
 	private int testDate;

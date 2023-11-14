@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import discount.Badges;
+import domain.ApplyDiscounts;
+import domain.Menu;
 import input.InputView;
 import output.OutputView;
 

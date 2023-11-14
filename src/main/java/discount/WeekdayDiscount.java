@@ -3,7 +3,7 @@ package discount;
 import java.util.HashMap;
 import java.util.Set;
 
-import christmas.Menu;
+import domain.Menu;
 import tool.ChangeCommaFormat;
 
 public class WeekdayDiscount {

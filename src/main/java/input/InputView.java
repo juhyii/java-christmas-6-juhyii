@@ -5,8 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Stream;
 
+import ErrorValidation.ValidateDate;
+import ErrorValidation.ValidateMenuFormat;
+import ErrorValidation.ValidateOrderFormat;
 import camp.nextstep.edu.missionutils.Console;
-import christmas.Menu;
+import domain.Menu;
 
 public class InputView {
 	private final int date;
@@ -23,7 +26,7 @@ public class InputView {
 		InputMessages.QUESTION_DATE.print();
 		String input = Console.readLine();
 		try {
-			ErrorValidation.validateDate(input);
+			ValidateDate.validateDate(input);
 			return Integer.parseInt(input);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -35,10 +38,10 @@ public class InputView {
 		InputMessages.QUESTION_MENU.print();
 		String input = Console.readLine();
 		try {
-			ErrorValidation.validateOrderFormat(input);
+			ValidateOrderFormat.validateOrderFormat(input);
 			List<String> menus = new ArrayList<>();
 			menus = Stream.of(input.split(",")).toList();
-			ErrorValidation.validateMenus(menus);
+			ValidateMenuFormat.validateMenus(menus);
 			return menus;
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
