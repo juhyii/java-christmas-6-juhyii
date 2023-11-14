@@ -38,6 +38,7 @@ public class OutputView {
 		printTotalDiscountAmount();
 		printAmountAfterDiscount();
 		printEventBadge();
+		printNewYear();
 	}
 
 	private static void printDate() {
@@ -98,5 +99,9 @@ public class OutputView {
 	private static void printEventBadge() {
 		System.out.println(OutputMessages.EVENT_BADGE.getMessage());
 		System.out.println(myBadge.name());
+	}
+	
+	private static void printNewYear() {
+		Notification.NOTICE_NEW_YEAR_EVENT.print();
 	}
 }
