@@ -13,21 +13,20 @@ public class ValidateMenuFormat {
 	
 	public static void validateMenus(List<String> menus) {
 		List<String> menuNow = new ArrayList<>();
-		List<String> duplication = new ArrayList<>();
+		List<String> menuNames = new ArrayList<>();
 		int count = 0;
+		
 		for (String m : menus) {
 			menuNow = Stream.of(m.split("-")).toList();
 			validateNumberRange(validateMenuInteger(menuNow.get(1)));
 			count = count + Integer.parseInt(menuNow.get(1));
-			if (duplication.contains(menuNow.get(0))) {
-				Notification.NOTICE_MENU_DUPLICATION.print();
-				throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
-			}
-			duplication.add(menuNow.get(0));
+			menuNames.add(menuNow.get(0));
 		}
+		
 		validateCount(count);
-		validateIsInMenu(duplication);
-		validateOnlyBeverage(duplication);
+		validateDuplication(menuNames);
+		validateIsInMenu(menuNames);
+		validateOnlyBeverage(menuNames);
 	}
 	
 	private static int validateMenuInteger(String input) {
@@ -50,6 +49,14 @@ public class ValidateMenuFormat {
 	private static void validateCount(int count) {
 		if (count > 20) {
 			Notification.NOTICE_TOO_MANY_MENU.print();
+			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
+		}
+	}
+	
+	private static void validateDuplication(List<String> menuNames){
+		Set<String> duplication = new HashSet<String>(menuNames);
+		if (duplication.size() != menuNames.size()) {
+			Notification.NOTICE_MENU_DUPLICATION.print();
 			throw new IllegalArgumentException(ErrorMessages.ERROR_ORDER.getMessage());
 		}
 	}
