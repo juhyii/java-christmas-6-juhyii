@@ -13,28 +13,42 @@ import discount.WeekdayDiscount;
 import discount.WeekendDiscount;
 
 public class ApplyDiscounts {
-	private static int date;
-	private static HashMap<Menu, Integer> inputMenu = new HashMap<Menu, Integer>();
-	private static int totalOrderAmount;
-
+	public static int totalOrderAmount;
 	public static boolean giveawayEvent = false;
 	public static int totalDiscount = 0;
 	public static List<String> discountDetails = new ArrayList<String>();
 	public static Badges myBadge = Badges.없음;
-
-	public ApplyDiscounts(int date, HashMap<Menu, Integer> inputMenu, int totalOrderAmount) {
+	
+	private static int date;
+	private static HashMap<Menu, Integer> inputMenu = new HashMap<Menu, Integer>();
+	
+	public ApplyDiscounts(int date, HashMap<Menu, Integer> inputMenu) {
 		this.date = date;
 		this.inputMenu = inputMenu;
-		this.totalOrderAmount = totalOrderAmount;
 	}
-
-	public static void apply() {
+	
+	public static void applyOrNot() {
+		totalOrderAmount = totalOrderAmount();
+		if (totalOrderAmount >= 10000) {
+			apply();
+		}
+	}
+	
+	private static void apply() {
 		applyDDayDiscount();
 		applyWeekdayDiscount();
 		applyWeekendDiscount();
 		applySpecialDiscount();
 		applyGiveawayEvent();
 		applyEventBadge();
+	}
+	
+	private static int totalOrderAmount() {
+		int amount = 0;
+		for (Menu menu : inputMenu.keySet()) {
+			amount = amount + menu.price() * inputMenu.get(menu);
+		}
+		return amount;
 	}
 
 	private static void applyDDayDiscount() {
@@ -87,5 +101,4 @@ public class ApplyDiscounts {
 		EventBadge badge = new EventBadge(totalDiscount);
 		myBadge = badge.result();
 	}
-
 }
