@@ -1,4 +1,4 @@
-package christmas;
+package domain;
 
 public enum Menu {
 	양송이수프("애피타이저", 6000),
@@ -14,10 +14,10 @@ public enum Menu {
 	레드와인("음료", 60000),
 	샴페인("음료", 25000);
 	
-	private String type;
-	private int price;
+	private final String type;
+	private final int price;
 
-	Menu(String type, int price) {
+	private Menu(String type, int price) {
 		this.type = type;
 		this.price = price;
 	}
@@ -29,5 +29,4 @@ public enum Menu {
 	public int price() {
 		return this.price;
 	}
-
 }

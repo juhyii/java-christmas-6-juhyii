@@ -8,8 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class DDayDiscountTest {
-	private DDayDiscount testDDay;
-	private HashMap<Integer, Integer> dateAndResult = new HashMap<Integer, Integer>() {
+	private static DDayDiscount testDDay;
+	private final static HashMap<Integer, Integer> dateAndResult = new HashMap<Integer, Integer>() {
 		{
 			put(1, 1000);
 			put(2, 1100);
